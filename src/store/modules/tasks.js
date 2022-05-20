@@ -1,7 +1,7 @@
 export default {
   state: {
     /************** Todo Tasks ************/
-    todo: [
+    tasks: [
       {
         id: 1,
         title: "code",
@@ -20,58 +20,71 @@ export default {
         description: "go to train",
         status: "todo",
       },
-    ],
-    /************** In Progress Tasks ************/
-    inProgress: [
+
+      /************** In Progress Tasks ************/
+
       {
         id: 1,
         title: "code in progress",
         description: "do refilex task for Todo application",
-        status: "todo",
+        status: "inProgress",
       },
       {
         id: 2,
         title: "solve in progress",
         description: "solve Leetcode problem ",
-        status: "todo",
+        status: "inProgress",
       },
       {
         id: 3,
         title: "train in progress",
         description: "go to train",
-        status: "todo",
+        status: "inProgress",
       },
-    ],
-    /************** Done Tasks ************/
-    done: [
+
+      /************** Done Tasks ************/
+
       {
         id: 1,
         title: "code done",
         description: "do refilex task for Todo application",
-        status: "todo",
+        status: "done",
       },
       {
         id: 2,
         title: "solve done",
         description: "solve Leetcode problem ",
-        status: "todo",
+        status: "done",
       },
       {
         id: 3,
         title: "train done",
         description: "go to train",
-        status: "todo",
+        status: "done",
       },
     ],
+    movingTask: {},
   },
-  actions: {},
-  mutations: {},
+  actions: {
+    // set one task to store the moving task
+    setMovingTask({ commit }, task) {
+      commit("setMovingTask", task);
+    },
+  },
+  mutations: {
+    setMovingTask: (state, task) => (state.movingTask = task),
+  },
   getters: {
     // todoTasks getters
-    getTodoTasks: (state) => state.todo,
+    getTodoTasks: (state) =>
+      state.tasks.filter((task) => task.status == "todo"),
     // inProgressTasks getters
-    getInProgressTasks: (state) => state.inProgress,
+    getInProgressTasks: (state) =>
+      state.tasks.filter((task) => task.status == "inProgress"),
     // doneTasks getters
-    getDoneTasks: (state) => state.done,
+    getDoneTasks: (state) =>
+      state.tasks.filter((task) => task.status == "done"),
+    // return moved task data
+    getMovedTask: (state) => state.movingTask,
   },
 };
