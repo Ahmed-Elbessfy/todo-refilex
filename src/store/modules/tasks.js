@@ -1,71 +1,13 @@
 export default {
   state: {
-    /************** Todo Tasks ************/
-    tasks: [
-      {
-        id: 1,
-        title: "code",
-        description: "do refilex task for Todo application",
-        status: "todo",
-      },
-      {
-        id: 2,
-        title: "solve",
-        description: "solve Leetcode problem ",
-        status: "todo",
-      },
-      {
-        id: 3,
-        title: "train",
-        description: "go to train",
-        status: "todo",
-      },
-
-      /************** In Progress Tasks ************/
-
-      {
-        id: 4,
-        title: "code in progress",
-        description: "do refilex task for Todo application",
-        status: "inProgress",
-      },
-      {
-        id: 5,
-        title: "solve in progress",
-        description: "solve Leetcode problem ",
-        status: "inProgress",
-      },
-      {
-        id: 6,
-        title: "train in progress",
-        description: "go to train",
-        status: "inProgress",
-      },
-
-      /************** Done Tasks ************/
-
-      {
-        id: 7,
-        title: "code done",
-        description: "do refilex task for Todo application",
-        status: "done",
-      },
-      {
-        id: 8,
-        title: "solve done",
-        description: "solve Leetcode problem ",
-        status: "done",
-      },
-      {
-        id: 9,
-        title: "train done",
-        description: "go to train",
-        status: "done",
-      },
-    ],
+    tasks: [],
     movingTask: {},
   },
   actions: {
+    //initiate state: get from local storage
+    initiateStore({ commit }) {
+      commit("initiateStore");
+    },
     // set one task to store the moving task
     setMovingTask({ commit }, task) {
       commit("setMovingTask", task);
@@ -74,13 +16,35 @@ export default {
     addNewTask({ commit }, newTask) {
       commit("addNewTask", newTask);
     },
+    // set Local storage to store current updated state in local storage
+    setLocalStorage({ commit }) {
+      commit("setLocalStorage");
+    },
   },
   mutations: {
-    setMovingTask: (state, task) => (state.movingTask = task),
-    addNewTask: (state, newTask) => {
-      newTask = { ...newTask, id: state.tasks.at(-1).id + 1, status: "todo" };
-      state.tasks.push(newTask);
+    initiateStore: (state) => {
+      // get tasks from local storage
+      const localStorageTasks = localStorage.getItem("tasks");
+      // if there are tasks at local Storage, save it at state
+      if (localStorageTasks) {
+        state.tasks = JSON.parse(localStorageTasks);
+      }
     },
+    setMovingTask: (state, task) => {
+      state.movingTask = task;
+    },
+    addNewTask: (state, newTask) => {
+      newTask = {
+        ...newTask,
+        id: Math.floor(Math.random() * 10000),
+        status: "todo",
+      };
+      state.tasks.push(newTask);
+      // store new task at local storage
+      localStorage.setItem("tasks", JSON.stringify(state.tasks));
+    },
+    setLocalStorage: (state) =>
+      localStorage.setItem("tasks", JSON.stringify(state.tasks)),
   },
   getters: {
     // todoTasks getters

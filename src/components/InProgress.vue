@@ -40,6 +40,8 @@ export default {
       // progress list accept moving from both Todo and Done
       // edit moved task status
       movedTask.status = taskStatus;
+      // storing updated task status at local storage
+      this.$store.dispatch("setLocalStorage");
     },
   },
 };

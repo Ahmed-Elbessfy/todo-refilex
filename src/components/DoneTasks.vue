@@ -29,6 +29,8 @@ export default {
       //  Done tasks is accepts from Both Todo & In progress
       // edit moved task status
       movedTask.status = taskStatus;
+      // storing updated task status at local storage
+      this.$store.dispatch("setLocalStorage");
     },
   },
 };
