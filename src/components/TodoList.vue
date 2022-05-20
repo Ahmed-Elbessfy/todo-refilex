@@ -2,12 +2,11 @@
   <section>
     <h1>Todo Tasks</h1>
     <ul>
-      <li>
-        <p class="task-title">task title</p>
+      <!-- Tasks List  -->
+      <li v-for="task in tasks" :key="task.id" draggable="true">
+        <p class="task-title">{{ task.title }}</p>
         <p class="task-desc">
-          task description Lorem ipsum, dolor sit amet consectetur adipisicing
-          elit. Cum, quidem voluptas. Ex nesciunt, voluptate alias nobis commodi
-          animi natus consequatur?
+          {{ task.description }}
         </p>
       </li>
     </ul>
@@ -15,7 +14,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    tasks() {
+      return this.$store.getters["getTodoTasks"];
+    },
+  },
+};
 </script>
 
 <style></style>
