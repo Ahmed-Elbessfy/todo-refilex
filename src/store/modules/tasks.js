@@ -24,19 +24,19 @@ export default {
       /************** In Progress Tasks ************/
 
       {
-        id: 1,
+        id: 4,
         title: "code in progress",
         description: "do refilex task for Todo application",
         status: "inProgress",
       },
       {
-        id: 2,
+        id: 5,
         title: "solve in progress",
         description: "solve Leetcode problem ",
         status: "inProgress",
       },
       {
-        id: 3,
+        id: 6,
         title: "train in progress",
         description: "go to train",
         status: "inProgress",
@@ -45,19 +45,19 @@ export default {
       /************** Done Tasks ************/
 
       {
-        id: 1,
+        id: 7,
         title: "code done",
         description: "do refilex task for Todo application",
         status: "done",
       },
       {
-        id: 2,
+        id: 8,
         title: "solve done",
         description: "solve Leetcode problem ",
         status: "done",
       },
       {
-        id: 3,
+        id: 9,
         title: "train done",
         description: "go to train",
         status: "done",
@@ -70,9 +70,17 @@ export default {
     setMovingTask({ commit }, task) {
       commit("setMovingTask", task);
     },
+    // add new task
+    addNewTask({ commit }, newTask) {
+      commit("addNewTask", newTask);
+    },
   },
   mutations: {
     setMovingTask: (state, task) => (state.movingTask = task),
+    addNewTask: (state, newTask) => {
+      newTask = { ...newTask, id: state.tasks.at(-1).id + 1, status: "todo" };
+      state.tasks.push(newTask);
+    },
   },
   getters: {
     // todoTasks getters
