@@ -1,48 +1,24 @@
-# todo-refilex
+# Todo-refilex
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a todo application where user can add, move, edit and delete tasks.
 
-## Recommended IDE Setup
+To try this project: 
+- download the project using this this command: 
+  
+  ```git clone https://github.com/Ahmed-Elbessfy/todo-refilex.git```
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
+- open project folder
+- open terminal inside the folder
+- run this command in the terminal
+   
+  ``` npm install ```
 
-## Customize configuration
+  to install dependencies
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- finally, run this command to run live server
+  
+  ```npm run dev ```
 
-## Project Setup
+- open your browser with this [link](http://localhost:3000/)
 
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Cypress Component Testing](https://docs.cypress.io/guides/component-testing/introduction)
-
-```sh
-npm run test:unit # or `npm run test:unit:ci` for headless testing
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-npm run build
-npm run test:e2e # or `npm run test:e2e:ci` for headless testing
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+Thank you fro testing my application
