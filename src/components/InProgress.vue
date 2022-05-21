@@ -1,7 +1,12 @@
 <template>
   <section>
     <h1>In Progress Tasks</h1>
-    <ul @drop="dropTask('inProgress')" @dragenter.prevent @dragover.prevent>
+    <ul
+      class="inProgress-tasks"
+      @drop="dropTask('inProgress')"
+      @dragenter.prevent
+      @dragover.prevent
+    >
       <!-- Tasks List  -->
       <li
         v-for="task in tasks"
@@ -9,11 +14,16 @@
         @dragstart="startDrag($event, task)"
         draggable="true"
       >
-        <p class="task-title">{{ task.title }}</p>
-        <p class="task-desc">
-          {{ task.description }}
-        </p>
-        <button @click="openEditTask(task)">edit</button>
+        <div>
+          <p class="task-title">{{ task.title }}</p>
+          <p class="task-desc">
+            {{ task.description }}
+          </p>
+        </div>
+        <div class="task-actions">
+          <button @click="openEditTask(task)">edit</button>
+          <button @click="deleteTask(task)">delete</button>
+        </div>
       </li>
     </ul>
     <EditTask

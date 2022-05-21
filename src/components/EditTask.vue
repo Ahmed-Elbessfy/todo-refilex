@@ -1,7 +1,7 @@
 <template>
   <div class="overlay">
     <form @submit.prevent="editTask">
-      <button @click="closeEditTaskForm">X</button>
+      <button class="close-button" @click="closeEditTaskForm">X</button>
       <h2>Edit Task</h2>
       <!-- title  -->
       <label for=""
@@ -11,7 +11,7 @@
       <!-- description  -->
       <label
         >Description:
-        <textarea v-model="localEditedTask.description"></textarea>
+        <textarea v-model="localEditedTask.description" res></textarea>
       </label>
 
       <input type="submit" value="Save Changes" />
@@ -56,12 +56,28 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 form {
   background: #fff;
+  position: relative;
+  border-radius: 1rem;
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background: transparent;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  z-index: 2;
+  cursor: pointer;
 }
 </style>

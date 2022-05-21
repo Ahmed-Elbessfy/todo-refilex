@@ -2,17 +2,11 @@
   <form @submit.prevent="addNewTask">
     <h2>Add New Task</h2>
     <!-- title  -->
-    <label for=""
-      >Title:
+    <label>
       <input type="text" v-model="title" class="title" />
     </label>
-    <!-- description  -->
-    <label
-      >Description:
-      <textarea v-model="description"></textarea>
-    </label>
 
-    <input type="submit" value="Add" />
+    <input type="submit" value="Add New Task" />
   </form>
 </template>
 

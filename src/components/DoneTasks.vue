@@ -1,14 +1,25 @@
 <template>
   <section>
     <h1>Done Tasks</h1>
-    <ul @drop="dropTask('done')" @dragenter.prevent @dragover.prevent>
+    <ul
+      class="done-tasks"
+      @drop="dropTask('done')"
+      @dragenter.prevent
+      @dragover.prevent
+    >
       <!-- Tasks List  -->
       <!-- done task is not draggable  -->
       <li v-for="task in tasks" :key="task.id">
-        <p class="task-title">{{ task.title }}</p>
-        <p class="task-desc">
-          {{ task.description }}
-        </p>
+        <div>
+          <p class="task-title">{{ task.title }}</p>
+          <p class="task-desc">
+            {{ task.description }}
+          </p>
+        </div>
+        <div class="task-actions">
+          <button @click="openEditTask(task)">edit</button>
+          <button @click="deleteTask(task)">delete</button>
+        </div>
       </li>
     </ul>
   </section>

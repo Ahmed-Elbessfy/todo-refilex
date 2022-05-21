@@ -57,6 +57,8 @@
   margin: 0;
   position: relative;
   font-weight: normal;
+  padding: 0;
+  margin: 0;
 }
 
 body {
@@ -65,10 +67,154 @@ body {
   background: var(--color-background);
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-transition: color 0.5s, background-color 0.5s;
+  -moz-transition: color 0.5s, background-color 0.5s;
+  -ms-transition: color 0.5s, background-color 0.5s;
+  -o-transition: color 0.5s, background-color 0.5s;
+}
+
+header {
+  background: var(--color-text);
+  color: var(--color-background);
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+}
+
+a,
+a:visited,
+a:active {
+  color: var(--color-background);
+  text-decoration: none;
+  font-size: 1.5rem;
+  margin: 0 2rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* for add & edit task form */
+form {
+  width: 80%;
+  max-width: 20rem;
+  padding: 1rem;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+input[type="text"],
+textarea {
+  border: none;
+  box-shadow: 0px 0px 4px #c3c3c3;
+  font-size: 1.4rem;
+  padding: 0.5rem;
+  color: var(--color-text);
+  margin-top: 0.5rem;
+  max-width: 100%;
+}
+
+textarea {
+  resize: none;
+  min-height: 10rem;
+}
+
+input[type="submit"] {
+  background: var(--color-text);
+  color: var(--color-background);
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+
+/* tasks list styles */
+
+.task-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  padding: 2rem;
+}
+
+ul {
+  min-height: 5rem;
+  border: 6px solid;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.todo-tasks {
+  border-color: #bf0000;
+  background-color: #ffc9c9;
+}
+.inProgress-tasks {
+  background: #b6dafd;
+}
+.done-tasks {
+  background: #59bd59;
+  border-color: #026602;
+}
+
+li {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+  background-color: var(--color-background);
+}
+
+.todo-tasks li {
+  border: #bf0000 3px solid;
+}
+
+.inProgress-tasks li {
+  border: 3px solid; /* color is set to default color of text  */
+}
+
+.done-tasks li {
+  border: #026602 3px solid;
+}
+
+li .task-title {
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 1rem;
+  word-break: break-all;
+}
+
+.task-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

@@ -1,9 +1,11 @@
 <template>
   <main>
     <AddTask />
-    <TodoList />
-    <InProgress />
-    <DoneTasks />
+    <div class="task-container">
+      <TodoList />
+      <InProgress />
+      <DoneTasks />
+    </div>
   </main>
 </template>
 
