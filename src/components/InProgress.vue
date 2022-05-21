@@ -13,13 +13,27 @@
         <p class="task-desc">
           {{ task.description }}
         </p>
+        <button @click="openEditTask(task)">edit</button>
       </li>
     </ul>
+    <EditTask
+      v-if="showEditTask"
+      :editedTask="editedTask"
+      @closeEditTaskForm="closeEditTaskForm"
+    />
   </section>
 </template>
 
 <script>
+import EditTask from "./EditTask.vue";
 export default {
+  data() {
+    return {
+      // edited task functionality data
+      showEditTask: false,
+      editedTask: {},
+    };
+  },
   computed: {
     tasks() {
       return this.$store.getters["getInProgressTasks"];
@@ -43,7 +57,18 @@ export default {
       // storing updated task status at local storage
       this.$store.dispatch("setLocalStorage");
     },
+    // open edit task form
+    openEditTask(task) {
+      this.showEditTask = true;
+      this.editedTask = task;
+    },
+    // close edit task form
+    closeEditTaskForm() {
+      this.showEditTask = false;
+      this.editedTask = {};
+    },
   },
+  components: { EditTask },
 };
 </script>
 

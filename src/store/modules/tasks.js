@@ -20,6 +20,10 @@ export default {
     setLocalStorage({ commit }) {
       commit("setLocalStorage");
     },
+    // set Edited task
+    setEditedTask({ commit }, task) {
+      commit("setEditedTask", task);
+    },
   },
   mutations: {
     initiateStore: (state) => {
@@ -45,6 +49,14 @@ export default {
     },
     setLocalStorage: (state) =>
       localStorage.setItem("tasks", JSON.stringify(state.tasks)),
+    setEditedTask: (state, task) => {
+      // find edited task index to replace it
+      let taskIdx = state.tasks.indexOf(task);
+      // replace task previous version with the new edited one
+      state.tasks.splice(taskIdx, 1, task);
+      // store new tasks at local storage
+      localStorage.setItem("tasks", JSON.stringify(state.tasks));
+    },
   },
   getters: {
     // todoTasks getters
