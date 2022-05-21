@@ -24,7 +24,7 @@
         </div>
         <div class="task-actions">
           <button @click="openEditTask(task)">edit</button>
-          <button @click="deleteTask(task)">delete</button>
+          <button @click="deleteTask(task.id)">delete</button>
         </div>
       </li>
     </ul>
@@ -78,6 +78,10 @@ export default {
     closeEditTaskForm() {
       this.showEditTask = false;
       this.editedTask = {};
+    },
+    // delete tasks
+    deleteTask(id) {
+      this.$store.dispatch("deleteTask", id);
     },
   },
   components: { EditTask },

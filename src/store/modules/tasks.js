@@ -24,6 +24,10 @@ export default {
     setEditedTask({ commit }, task) {
       commit("setEditedTask", task);
     },
+    // delete Task
+    deleteTask({ commit }, id) {
+      commit("deleteTask", id);
+    },
   },
   mutations: {
     initiateStore: (state) => {
@@ -56,6 +60,14 @@ export default {
       state.tasks.splice(taskIdx, 1, task);
       // store new tasks at local storage
       localStorage.setItem("tasks", JSON.stringify(state.tasks));
+    },
+    deleteTask: (state, id) => {
+      // filter existing tasks
+      let newTasks = state.tasks.filter((task) => task.id !== id);
+      // save new tasks to store state
+      state.tasks = newTasks;
+      // save new tasks to local storage
+      localStorage.setItem("tasks", JSON.stringify(newTasks));
     },
   },
   getters: {
