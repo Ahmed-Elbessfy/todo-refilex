@@ -182,6 +182,7 @@ ul {
 
 li {
   list-style: none;
+  min-height: 5rem;
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.5rem;
@@ -206,15 +207,18 @@ li {
   border: #026602 3px solid;
 }
 
+.task-content {
+  max-width: 80%;
+  word-break: break-all;
+}
+
 li .task-title {
   font-weight: 600;
   text-transform: capitalize;
   font-size: 1rem;
-  word-break: break-all;
 }
 
 .task-actions {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }

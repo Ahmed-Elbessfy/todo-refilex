@@ -14,7 +14,7 @@
         @dragstart="startDrag($event, task)"
         draggable="true"
       >
-        <div>
+        <div class="task-content">
           <p class="task-title">
             {{ task.title }}
           </p>
@@ -23,8 +23,26 @@
           </p>
         </div>
         <div class="task-actions">
-          <button @click="openEditTask(task)">edit</button>
-          <button @click="deleteTask(task.id)">delete</button>
+          <!-- delete task button -->
+          <fa
+            icon="xmark"
+            size="xl"
+            @click="deleteTask(task.id)"
+            :style="{
+              color: '#bf0000',
+              cursor: 'pointer',
+              marginBottom: '2rem',
+            }"
+            title="Delete task"
+          />
+          <!-- edit task button  -->
+          <fa
+            icon="pen-to-square"
+            size="lg"
+            :style="{ color: '#2c3e50', cursor: 'pointer' }"
+            @click="openEditTask(task)"
+            title="Edit task"
+          />
         </div>
       </li>
     </ul>
